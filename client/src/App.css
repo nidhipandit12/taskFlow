@@ -131,3 +131,535 @@
     font-size: 25px;
   }
 }
+/* Mobile Button Responsive Fix */
+
+@media (max-width: 600px) {
+    button,
+    .primary-btn,
+    .secondary-btn {
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: normal;
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .task-actions,
+    .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-actions button,
+    .project-actions button {
+        flex: 1 1 auto;
+    }
+
+    .page-container {
+        padding: 20px 14px;
+    }
+}
+
+/* All Pages Mobile Responsive Fix */
+
+@media (max-width: 600px) {
+
+    .page-container {
+        width: 100%;
+        padding: 20px 14px;
+        box-sizing: border-box;
+    }
+
+    .projects-grid,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card,
+    .task-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .project-card button,
+    .task-card button,
+    .project-card a,
+    .task-card a,
+    .page-container button,
+    .page-container .primary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        font-size: 13px;
+        white-space: normal;
+    }
+
+    .task-actions,
+    .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-actions button,
+    .project-actions button {
+        flex: 1 1 100px;
+    }
+
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+/* LOGIN AND REGISTER UI */
+.auth-container,
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-sizing: border-box;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+}
+
+.auth-card h1,
+.auth-card h2 {
+    color: #252b55;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 15px;
+    background: #6257d9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* PROJECTS UI */
+.projects-container,
+.projects-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px;
+    min-height: 100vh;
+    background: #f4f5ff;
+    box-sizing: border-box;
+}
+
+.projects-container h1,
+.projects-page h1 {
+    color: #252b55;
+    margin-bottom: 25px;
+}
+
+.projects-container input,
+.projects-page input,
+.projects-container textarea,
+.projects-page textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.project-card {
+    background: white;
+    padding: 24px;
+    margin: 18px 0;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.project-card h2,
+.project-card h3 {
+    color: #292e58;
+}
+
+.project-card button,
+.projects-container button,
+.projects-page button {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 7px;
+    background: #6257d9;
+    color: white;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .auth-container,
+    .auth-page {
+        padding: 15px;
+    }
+
+    .auth-card {
+        padding: 25px 18px;
+    }
+
+    .projects-container,
+    .projects-page {
+        padding: 20px 14px;
+    }
+
+    .project-card {
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .project-card button,
+    .projects-container button,
+    .projects-page button {
+        max-width: 100%;
+        white-space: normal;
+    }
+}
+/* PROJECTS PAGE DESIGN */
+
+.projects-page,
+.projects-container,
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.projects-page h1,
+.projects-container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #252b55;
+    margin-bottom: 10px;
+}
+
+.projects-page p,
+.projects-container p {
+    color: #777b91;
+}
+
+/* CREATE PROJECT FORM */
+
+.project-form {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.project-form input,
+.project-form textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #dfe2ed;
+    border-radius: 9px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.project-form input:focus,
+.project-form textarea:focus {
+    border-color: #6257d9;
+}
+
+/* PROJECT CARDS */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #e8e9f2;
+    box-shadow: 0 5px 18px rgba(40,40,90,0.07);
+    transition: 0.25s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(40,40,90,0.12);
+}
+
+.project-card h2,
+.project-card h3 {
+    color: #292e58;
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.project-card p {
+    color: #777b91;
+    line-height: 1.6;
+}
+
+/* PROJECT BUTTONS */
+
+.project-card button,
+.project-card a,
+.project-form button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px 17px;
+    margin: 8px 5px 0 0;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-page,
+    .projects-container,
+    .page-container {
+        padding: 20px 14px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .project-card button,
+    .project-card a {
+        margin: 6px 4px 0 0;
+    }
+}
+
+/* TASKFLOW NAVBAR DESIGN */
+
+nav {
+    width: 100%;
+    min-height: 70px;
+    padding: 15px 35px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+nav a {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    margin: 0 12px;
+}
+
+nav a:first-child {
+    font-size: 23px;
+    font-weight: 800;
+}
+
+nav button {
+    background: white;
+    color: #6257d9;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background: #eeeeff;
+}
+
+@media (max-width: 600px) {
+    nav {
+        padding: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 5px 8px;
+        font-size: 14px;
+    }
+
+    nav a:first-child {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav button {
+        margin-top: 5px;
+    }
+}
+
+/* PROJECT DETAILS PAGE */
+
+.page-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px;
+    min-height: 100vh;
+    background: #f4f5ff;
+    box-sizing: border-box;
+}
+
+.page-container h1 {
+    color: #252b55;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.page-container h2 {
+    color: #30345f;
+    margin: 25px 0 18px;
+}
+
+/* TASK FORM */
+
+.task-form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    display: grid;
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dfe2ed;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* TASK CARDS */
+
+.task-card {
+    background: white;
+    padding: 22px;
+    margin: 16px 0;
+    border-radius: 14px;
+    border: 1px solid #e5e7f0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.task-card h3 {
+    color: #292e58;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.task-card p {
+    color: #73778c;
+    line-height: 1.6;
+}
+
+/* TASK BUTTONS */
+
+.task-card button,
+.task-form button,
+.page-container > button {
+    padding: 10px 16px;
+    margin: 6px 5px 6px 0;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* FILTERS */
+
+.page-container select,
+.page-container input {
+    padding: 11px;
+    border: 1px solid #dfe2ed;
+    border-radius: 8px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+    .page-container {
+        padding: 20px 14px;
+    }
+
+    .task-card {
+        padding: 17px;
+    }
+
+    .task-card button {
+        margin: 5px 3px;
+    }
+
+    .task-form {
+        padding: 17px;
+    }
+}
