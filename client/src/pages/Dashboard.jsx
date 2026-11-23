@@ -12,9 +12,7 @@ function Dashboard() {
         const res = await api.get('/dashboard/stats');
         setStats(res.data.stats || res.data);
       } catch (err) {
-        setError(
-          err.response?.data?.message || 'Unable to load dashboard'
-        );
+        setError(err.response?.data?.message || 'Unable to load dashboard');
       }
     };
 
@@ -29,43 +27,32 @@ function Dashboard() {
     return <div className="page-container">Loading dashboard...</div>;
   }
 
+  const cards = [
+    { title: 'Total Projects', value: stats.totalProjects },
+    { title: 'Total Tasks', value: stats.totalTasks },
+    { title: 'To Do', value: stats.todo },
+    { title: 'In Progress', value: stats.inProgress },
+    { title: 'Completed', value: stats.done },
+    { title: 'Overdue', value: stats.overdue }
+  ];
+
   return (
     <div className="page-container">
       <h1>Dashboard</h1>
-      <p>Here's an overview of your TaskFlow workspace.</p>
+      <p>Track your projects and tasks.</p>
 
-      <div className="stats-grid">
-
-        <div className="stat-card">
-          <h3>Total Projects</h3>
-          <h2>{stats.totalProjects ?? 0}</h2>
-        </div>
-
-        <div className="stat-card">
-          <h3>Total Tasks</h3>
-          <h2>{stats.totalTasks ?? 0}</h2>
-        </div>
-
-        <div className="stat-card">
-          <h3>Completed Tasks</h3>
-          <h2>{stats.completedTasks ?? 0}</h2>
-        </div>
-
-        <div className="stat-card">
-          <h3>Overdue Tasks</h3>
-          <h2>{stats.overdueTasks ?? 0}</h2>
-        </div>
-
+      <div className="dashboard-grid">
+        {cards.map((card) => (
+          <div className="dashboard-card" key={card.title}>
+            <h3>{card.title}</h3>
+            <h2>{card.value ?? 0}</h2>
+          </div>
+        ))}
       </div>
 
-      <div className="dashboard-action">
-        <h2>Manage Your Work</h2>
-        <p>Create projects and organize your tasks.</p>
-
-        <Link to="/projects" className="primary-link">
-          View My Projects
-        </Link>
-      </div>
+      <Link to="/projects" className="primary-btn">
+        Manage Projects
+      </Link>
     </div>
   );
 }
