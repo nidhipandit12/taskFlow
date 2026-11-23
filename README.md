@@ -1,3 +1,12 @@
+<img width="472" height="500" alt="login" src="https://github.com/user-attachments/assets/75e9e0b5-3d77-4338-8520-e65403a0f0a1" />
+<img width="460" height="587" alt="register" src="https://github.com/user-attachments/assets/7eb2d2dc-96ea-415d-8fab-7ae8d42d3500" />
+<img width="1882" height="977" alt="dashboard" src="https://github.com/user-attachments/assets/8cba836f-545b-4a34-b62a-07127b8d4414" />
+<img width="1875" height="977" alt="project" src="https://github.com/user-attachments/assets/b5dfabfd-6fe4-4280-aa0f-42bdba7771ed" />
+<img width="1877" height="982" alt="tasks" src="https://github.com/user-attachments/assets/0a5ee232-42c7-4bc0-ad21-a846b08efcce" />
+
+
+
+
 # TaskFlow – MERN Stack Project Management Application
 
 TaskFlow is a project and task management application built using the MERN stack. It allows users to manage projects, organize tasks, track progress and monitor deadlines.
