@@ -9,15 +9,17 @@ function ProjectDetails() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [editingTask, setEditingTask] = useState(null);
 
-  const [form, setForm] = useState({
+  const initialForm = {
     title: '',
     description: '',
     status: 'todo',
     priority: 'medium',
     dueDate: ''
-  });
+  };
 
+  const [form, setForm] = useState(initialForm);
   const [statusFilter, setStatusFilter] = useState('');
   const [priorityFilter, setPriorityFilter] = useState('');
   const [search, setSearch] = useState('');
@@ -29,8 +31,14 @@ function ProjectDetails() {
         api.get(`/projects/${id}/tasks`)
       ]);
 
-      setProject(projectRes.data.project);
-      setTasks(taskRes.data.tasks || []);
+      setProject(projectRes.data.project || projectRes.data);
+
+      const taskData = Array.isArray(taskRes.data)
+        ? taskRes.data
+        : taskRes.data.tasks || [];
+
+      setTasks(taskData);
+      setError('');
     } catch (err) {
       setError(err.response?.data?.message || 'Unable to load project');
     } finally {
@@ -52,19 +60,46 @@ function ProjectDetails() {
 
     try {
       await api.post(`/projects/${id}/tasks`, form);
-
-      setForm({
-        title: '',
-        description: '',
-        status: 'todo',
-        priority: 'medium',
-        dueDate: ''
-      });
-
+      setForm(initialForm);
       await fetchData();
     } catch (err) {
       setError(err.response?.data?.message || 'Unable to create task');
     }
+  };
+
+  const editTask = (task) => {
+    setEditingTask(task._id);
+
+    setForm({
+      title: task.title,
+      description: task.description || '',
+      status: task.status,
+      priority: task.priority,
+      dueDate: task.dueDate
+        ? new Date(task.dueDate).toISOString().split('T')[0]
+        : ''
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const updateTask = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      await api.put(`/tasks/${editingTask}`, form);
+      setEditingTask(null);
+      setForm(initialForm);
+      await fetchData();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Unable to update task');
+    }
+  };
+
+  const cancelEdit = () => {
+    setEditingTask(null);
+    setForm(initialForm);
   };
 
   const updateStatus = async (taskId, status) => {
@@ -115,8 +150,8 @@ function ProjectDetails() {
 
       {error && <p className="error-message">{error}</p>}
 
-      <form className="task-form" onSubmit={createTask}>
-        <h2>Create New Task</h2>
+      <form className="task-form" onSubmit={editingTask ? updateTask : createTask}>
+        <h2>{editingTask ? 'Edit Task' : 'Create New Task'}</h2>
 
         <input
           name="title"
@@ -152,7 +187,13 @@ function ProjectDetails() {
           onChange={handleChange}
         />
 
-        <button type="submit">Add Task</button>
+        <button type="submit">
+          {editingTask ? 'Update Task' : 'Add Task'}
+        </button>
+
+        {editingTask && (
+          <button type="button" onClick={cancelEdit}>Cancel</button>
+        )}
       </form>
 
       <div className="task-filters">
@@ -162,20 +203,14 @@ function ProjectDetails() {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-        >
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
           <option value="">All Status</option>
           <option value="todo">To Do</option>
           <option value="in-progress">In Progress</option>
           <option value="done">Done</option>
         </select>
 
-        <select
-          value={priorityFilter}
-          onChange={(e) => setPriorityFilter(e.target.value)}
-        >
+        <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
           <option value="">All Priorities</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
@@ -211,10 +246,8 @@ function ProjectDetails() {
                 <option value="done">Done</option>
               </select>
 
-              <button
-                className="delete-btn"
-                onClick={() => deleteTask(task._id)}
-              >
+              <button onClick={() => editTask(task)}>Edit</button>
+              <button className="delete-btn" onClick={() => deleteTask(task._id)}>
                 Delete
               </button>
             </div>

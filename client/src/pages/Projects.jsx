@@ -9,16 +9,22 @@ function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchProjects = async () => {
-    try {
-      const res = await api.get('/projects');
-      setProjects(res.data.projects || []);
-    } catch (err) {
-      setError(err.response?.data?.message || 'Unable to load projects');
-    } finally {
-      setLoading(false);
-    }
-  };
+ const fetchProjects = async () => {
+  try {
+    const res = await api.get('/projects');
+
+    const projectData = Array.isArray(res.data)
+      ? res.data
+      : res.data.projects || [];
+
+    setProjects(projectData);
+    setError('');
+  } catch (err) {
+    setError(err.response?.data?.message || 'Unable to load projects');
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     fetchProjects();
